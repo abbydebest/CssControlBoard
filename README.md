@@ -24,6 +24,8 @@ First I was very excited with my type manipulator idea, but it seemed like a har
 I expect to use the following CSS techniques for these reasons:
 * Grid/flexbox for creating a proper lay-out
 * `:has()` attribute to create 'if statements' with CSS and change website based in input
+* Effects and overlays, masks
+* Custom properties voor cause and action
 
 ## Challenges
 I think the biggest challenge lies in creating a visually realistic lamp with light effect in code.
@@ -31,3 +33,7 @@ I think the biggest challenge lies in creating a visually realistic lamp with li
 ## Sketches
 
 ## Feedback
+
+* Iets toevoegen, muis/gezicht
+* 
+* 

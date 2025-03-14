@@ -43,7 +43,7 @@ I think the biggest challenge lies in creating a visually realistic lamp with li
 ## Start code
 I stated with some base HTML for my lay-out and build up with some standard CSS(remedy) I typically use.
 
-![Start of my code with some base HTML and standard CSS(remedy)](./images/process/Screenshot-week2-start-code.png)
+![Start of my code with some base HTML and standard CSS(remedy)](./images/process/screenshot-week2-start-code.png)
 
 ## Start lamp
 ### Lamp top shape(8 values border radius)
@@ -77,7 +77,7 @@ Add image of gradient explained/drawn
 I sized the `::after` element to the size I wanted it to be. After which I added two background gradients with their own cut-out on opposite sides. I wanted to achieve an 'elongated eclipse' shaped cut out, but when I sized up the transparent area(cut out) I lost most of the width in the shape, resulting in a super small neck/foot with a too short(not long/elongated enough) cut out. At first, I thought the best way to fix this was to add a third gradient in between to add some 'extra' body/width to the whole of the shape. Eventually I managed to fix this without an extra gradient, but by simply doubling the background-size to 200% and by making the cut out smaller, lowering the transparent em to 1.5em.
 
 ## The end result after week 1
-![Result after week 1](./images/process/Screenshot-week2-start-lamp.png)
+![Result after week 1](./images/process/screenshot-week2-start-lamp.png)
 
 ## Feedback
 * stack

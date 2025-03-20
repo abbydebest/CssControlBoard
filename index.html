@@ -21,6 +21,7 @@
         <header>
             <nav></nav>
         </header>
+        <h1>I want a Nesso lamp</h1>
         <!-- ///////////////////////// -->
         <!-- 🕯️🕯️🕯️ SECTION LIGHT 🕯️🕯️🕯️ -->
         <!-- ///////////////////////// -->
@@ -30,7 +31,9 @@
             <!-- //////////////// -->
             <!-- Wel of geen aria label? -->
             <div></div>
-            <!-- <div></div> -->
+            <div></div>
+        </section>
+        <section>
             <!-- /////////////////// -->
             <!-- 🤎🤎🤎 DRESSER 🤎🤎🤎 -->
             <!-- /////////////////// -->
@@ -39,20 +42,23 @@
         <!-- //////////////////// -->
         <!-- 🩷🩷🩷 CONTROLS 🩷🩷🩷 -->
         <!-- //////////////////// -->
-         <section>
-            <label for="">Intensity light<input type="range" min="0" max="10" value="" step=""></label>
-            <label for="">Colour light<input type="range" min="0" max="10" value="" step=""></label>
-            <label for="">Warmth light<input type="range" min="0" max="10" value="" step=""></label>
-            <label for="">Colour lamp
-                <input type="radio" value="cream" name="colour-lamp">
+        <section>
+            <label>Intensity light<input type="range" min="0" max="10" value="5" step="0.1" name="intensity"></label>
+            <!-- <label>Colour light<input type="range" min="0" max="10" value="" step=""></label> -->
+            <!-- <label>Warmth light<input type="range" min="0" max="10" value="5" step="0.1" name="warmth"></label> -->
+            <label>Colour lamp
+                <input type="radio" value="seashell" name="colour-lamp" checked>
                 <input type="radio" value="pink" name="colour-lamp">
-                <input type="radio" value="brown" name="colour-lamp">
-                <input type="radio" value="orange" name="colour-lamp">
-                <input type="radio" value="light-blue" name="colour-lamp">
-                <input type="radio" value="chrome" name="colour-lamp">
-                <input type="radio" value="light-blue" name="colour-lamp">
-            </label>    
-         </section>
+                <input type="radio" value="SaddleBrown" name="colour-lamp">
+                <input type="radio" value="#EA806C" name="colour-lamp">
+                <input type="radio" value="lightblue" name="colour-lamp">
+                <input type="radio" value="silver" name="colour-lamp">
+                <!-- <input type="radio" value="gold" name="colour-lamp"> -->
+            </label>
+            <label><input type="checkbox" value="switch" name="switch"></label>  
+            <!-- <input type="checkbox" id="switch" value="switch" name="switch">   -->
+        </section>
     </main>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -127,4 +127,7 @@ Lastly I added some controls in preparation of making the lamp and scene interac
 ![Result after week 3](./images/process/screenshot-week3-end-result.png)
 
 ## Feedback
-* 
+* 3D isometric of perspective
+* CSS nesting (componenten bij elkaar houden, structuur in lezen)
+* Container queries
+* Typography title and animation

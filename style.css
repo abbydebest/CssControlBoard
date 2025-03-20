@@ -4,21 +4,15 @@
 
 @font-face {
     font-family: "Clay";
-    src: url(../fonts/CLAY.otf);
+    src: url(./fonts/CLAY.otf);
 }
-/* SOURCE: https://type-department.com/products/clay */
+/* 🔗 SOURCE: https://type-department.com/products/clay */
 
 @font-face {
-    font-family: "";
-    src: url(../fonts/);
+    font-family: "Comico";
+    src: url(./fonts/Comico-Regular.woff);
 }
-/* SOURCE: https://extraset.ch/typefaces/es-replan-variform/ */
-
-@font-face {
-    font-family: "";
-    src: url(../fonts/);
-}
-/* SOURCE: https://uncut.wtf/display/phosphene/ */
+/* 🔗 SOURCE: https://www.fontshare.com/?q=Comico */
 
 /* ////////////////////// */
 /* 🍙🍙🍙 CSS REMEDY 🍙🍙🍙 */
@@ -38,16 +32,87 @@
     /* Colours */
     --black: #1f1f1f;
     --white: #ffffff;
-    --creme: seashell;
+    --seashell: #fff5ee;
+    --pink: #ffc0cb;
+    /* --aubergine: #5C343C; */
+    --brown: #6d360e;
+    --orange: #EA806C;
+    /* --orange: #F1977D; */
+    --lightblue: lightblue;
+    --silver: silver;
+    --gold: gold;
 
-    /* Shadows */
-    --shadow-creme: rgba(192, 157, 132, 0.643);
-    --lamp-color: seashell;
+
+    /* Lamp colour */
+    --lamp-color: var(--seashell);
+
+    /* Shadow colour */
+    --lamp-shadow: oklch(from var(--lamp-color) calc(l / 1.3) calc(c * 1.5 ) h);
+
+    /* Shadow colours */
+    --shadow-seashell: rgba(192, 157, 132, 0.643);
+    /* --shadow-pink: rgb(219, 145, 158); */
+    --shadow-brown: #4c2407;
+    /* --shadow-orange: rgb(197, 128, 0); */
+    --shadow-orange: #a3594b;
+    /* --shadow-lightblue: rgb(122, 174, 192); */
+    /* --shadow-silver: rgb(152, 152, 152); */
+    /* --shadow-gold: rgb(195, 165, 0); */
+
+    --background-color: var(--lamp-color);
+
+    /* Background gradients */
+    /* Background gradients top */
+    --gradient-colour-top:
+        /* Indent shadow effect with two radial gradients */
+        radial-gradient(
+            var(--lamp-color) 30%,
+            transparent 70%
+        ),
+        radial-gradient(
+            var(--lamp-shadow) 1%,
+            transparent 70%
+        ),
+
+        /* Rounding shadow on top shape with linear and radial gradient on top */
+        radial-gradient(
+            var(--lamp-color) 1%,
+            transparent 70%
+        ),
+        linear-gradient(
+            transparent 40%,
+            var(--lamp-shadow) 95%
+        );
+    
+    /* Background gradients stand */
+    --gradient-colour-stand: linear-gradient(
+        to bottom,
+        var(--lamp-shadow),
+        var(--lamp-color)
+    );
+
+    --gradient-chrome-stand: linear-gradient(
+        /* Chrome effect gradients */
+        90deg,
+        #333 0%,
+        #555 10%,
+        #DDD 20%,
+        #FFF 30%,
+        #BBB 40%,
+        #888 50%,
+        #CCC 60%,
+        #FFF 70%,
+        #AAA 80%,
+        #666 90%,
+        #444 100%
+    );
+
+    /* Dresser */
+    --dresser-brown: #472400;
 
     /* Fonts */
     --clay: "Clay", Arial, Helvetica, sans-serif;
-    --pixel: "Phosphene", Arial, Helvetica, sans-serif;
-    --regular: "ES Replan", Arial, Helvetica, sans-serif;
+    --comico: "Comico", Arial, Helvetica, sans-serif;
 
     /* Font sizes mobile/small */
     --h1-small: 5rem;
@@ -58,7 +123,8 @@
     --letter-spacing: 0.04rem;
 
     /* Font sizes normal/desktop*/
-    --h1: 8rem;
+    --h1: 6.5rem;
+    /* clamp */
     --h2: 4rem;
     --h3: 1.5rem;
     --p: 1rem;
@@ -69,7 +135,82 @@
     --width-medium: 30%;
     --width-large: 75%;
 
-    /* Shadow */
+    /* Sliders */
+    /* 🔗 SOURCE: https://claude.ai/share/5b199692-d931-4f2f-bfd9-c9615dd21d1d */
+
+    /* Default values for the sliders */
+    --intensity: 5;
+    --warmth: 5;
+    
+    /* Base dimensions that will be used as starting points */
+    --base-light-width: 25;
+    --base-light-height: 14;
+    
+    /* Calculate dimensions based on intensity (adding up to 2em extra at max) */
+    --light-width: calc(var(--base-light-width) * 1em  + (var(--intensity) * 0.2em));
+    --light-height: calc(var(--base-light-height) * 1em + (var(--intensity) * 0.2em));
+
+    /* Warmth adjustment for light color */
+    --light-hue-shift: calc(var(--warmth) * 5deg);
+
+    --dark-mode: false;
+}
+
+/* //////////////// */
+/* 🎱🎱🎱 HTML 🎱🎱🎱 */
+/* //////////////// */
+
+html:has([value="seashell"]:checked) {
+	--lamp-color: var(--seashell);
+    --lamp-shadow: var(--shadow-seashell);
+    --background-gr-stand: var(--gradient-colour-stand);
+    --background-gr-top: var(--gradient-colour-top);
+}
+
+html:has([value="pink"]:checked) {
+	--lamp-color: var(--pink);
+    /* --shadow: var(--shadow-pink); */
+    --background-gr-stand: var(--gradient-colour-stand);
+    --background-gr-top: var(--gradient-colour-top);
+}
+
+html:has([value="SaddleBrown"]:checked) {
+	--lamp-color: var(--brown);
+    --lamp-shadow: var(--shadow-brown);
+    --background-gr-stand: var(--gradient-colour-stand);
+    --background-gr-top: var(--gradient-colour-top);
+}
+
+html:has([value="#EA806C"]:checked) {
+	--lamp-color: var(--orange);
+    --lamp-shadow: var(--shadow-orange);
+    --background-gr-stand: var(--gradient-colour-stand);
+    --background-gr-top: var(--gradient-colour-top);
+}
+
+html:has([value="lightblue"]:checked) {
+	--lamp-color: var(--lightblue);
+    /* --shadow: var(--shadow-lightblue); */
+
+    --background-gr-stand: var(--gradient-colour-stand);
+    --background-gr-top: var(--gradient-colour-top);
+}
+
+html:has([value="silver"]:checked) {
+	--lamp-color: var(--silver);
+    /* --shadow: var(--shadow-silver); */
+
+    --background-gr-stand: var(--gradient-chrome-stand);
+    --background-gr-top: var(--gradient-colour-top);
+}
+
+/* html:has([value="gold"]:checked) {
+	--lamp-color: var(--gold);
+    --shadow: var(--shadow-gold);
+} */
+
+html:has([value="switch"]:checked) {
+    --dark-mode: true;
 }
 
 /* /////////////////////////// */
@@ -87,10 +228,15 @@ body {
 }
 
 h1 {
-    font-family: var(--clay);
+    font-family: var(--comico);
     color: var(--black);
     font-size: var(--h1);
     text-align: center;
+    width: 80vw;
+    line-height: 8rem;
+    position: absolute;
+    top: 8.5vh;
+    left: 9vw;
 }
 
 h2 {
@@ -101,7 +247,7 @@ h2 {
 }
 
 p {
-    font-family: var(--regular);
+    font-family: var(--comico);
     font-size: var(--p);
     text-align: center;
 }
@@ -125,10 +271,7 @@ body {
     height: 100dvh;
     width: 100dvw;
     position: relative;
-
-    background-color: 
-    /* #633200 */
-    pink;
+    z-index: 0;
 
     cursor: url("") 15 100, pointer;
 }
@@ -137,14 +280,14 @@ body {
 /* 🤠🤠🤠 HEADER 🤠🤠🤠 */
 /* ////////////////// */
 
-/* ///////////////////////// */
-/* 🕯️🕯️🕯️ SECTION LIGHT 🕯️🕯️🕯️ */
-/* ///////////////////////// */
+/* //////////////////////// */
+/* 🕯️🕯️🕯️ SECTION LAMP 🕯️🕯️🕯️ */
+/* //////////////////////// */
 
 section:first-of-type {
     /* Stacking context */
-    position: absolute;
-    z-index: 0;
+    /* position: absolute;
+    z-index: 0; */
 
     display: flex;
     justify-content: center;
@@ -152,50 +295,56 @@ section:first-of-type {
 
     height: 100vh;
     width: 100vw;
+    z-index: 1;
 }
 
 /* //////////////// */
 /* 🫒🫒🫒 LAMP 🫒🫒🫒 */
 /* //////////////// */
-/* SOURCE: Sanne's vormpjes met CSS themasessie */
+/* 🔗 SOURCE: Sanne's vormpjes met CSS themasessie */
 
-div:first-of-type {
+section:first-of-type > div:first-child {
     /* Position stand and foot in center of div */
     display: grid;
     justify-items: center;
+    /* Margin-top resolving with grid or other positioning */
     margin-top: 18.5em;
 
     position: relative;
+    z-index: 5;
 
-    background-color: var(--creme);
-    filter: drop-shadow(0 0 1rem var(--creme));
+    background-color: var(--lamp-color);
+    /* filter: drop-shadow(0 0 1rem var(--lamp-color)); */
     height: 13em;
     width: 24em;
 
     /* Mushroom shape with border radius */
     border-radius: 100% 100% 100% 100% / 100% 100% 40% 40%;
 
+    /* First wanted to use color-mix to create a shadow colour */
+    /* --shadow: color-mix(in srgb, var(--lamp-color) 100%, #704400 30%); */
+
     /* Background images with gradients to create shadows */
-    background-image:
+    background-image: var(--background-gr-top);
         /* Indent shadow effect with two radial gradients */
-        radial-gradient(
+        /* radial-gradient(
             var(--lamp-color) 30%,
             transparent 70%
         ),
         radial-gradient(
-            var(--shadow-creme) 1%,
+            var(--lamp-shadow) 1%,
             transparent 70%
-        ),
+        ), */
 
         /* Rounding shadow on top shape with linear and radial gradient on top */
-        radial-gradient(
+        /* radial-gradient(
             var(--lamp-color) 1%,
             transparent 70%
         ),
         linear-gradient(
             transparent 40%,
-            var(--shadow-creme) 95%
-        );
+            var(--lamp-shadow) 95%
+        ); */
 
     background-size:
     25% 10%,
@@ -210,184 +359,464 @@ div:first-of-type {
     bottom;
 
     background-repeat: no-repeat;
-}
 
-/* //////////////// */
-/* 🪐🪐🪐 FOOT 🪐🪐🪐 */
-/* //////////////// */
+    /* //////////////// */
+    /* 🪐🪐🪐 FOOT 🪐🪐🪐 */
+    /* //////////////// */
 
-div:first-of-type::before {
-    position: absolute;
-    z-index: -2;
-    display: block;
-    content: "";
-    bottom: -70%;
+    &::before {
+        content: "";
+        position: absolute;
+        z-index: 2;
+        display: block;
+        bottom: -70%;
 
-    width: 10em;
-    height: 4em;
+        width: 10em;
+        height: 4em;
 
-    /* Foot shape with border radius */
-    border-radius: 50% 50% 50% 50% / 50% 50% 40% 40%;
-    background-color: var(--creme);
+        /* Foot shape with border radius */
+        border-radius: 50% 50% 50% 50% / 50% 50% 40% 40%;
+        background-color: var(--lamp-color);
 
-    /* Shadow on foot shape */
-    background-image:
-    radial-gradient(
-        at center top,
-        /* Pixel blurred for smooth edge */
-        transparent calc(50% + 2px),
-        var(--shadow-creme) 0
-    ),
-    linear-gradient(
-        var(--shadow-creme) 0,
-        transparent 45%
-    );
+        /* Shadow on foot shape */
+        background-image:
+        radial-gradient(
+            at center top,
+            /* Pixel blurred for smooth edge */
+            transparent calc(50% + 2px),
+            var(--lamp-shadow) 0
+        ),
+        linear-gradient(
+            var(--lamp-shadow) 0,
+            transparent 45%
+        );
 
-    /* clip-path: polygon( 68.775% 0.037%,68.775% 0.037%,68.922% 4.677%,69.192% 9.403%,69.59% 14.185%,70.119% 18.995%,70.784% 23.802%,71.588% 28.578%,72.536% 33.293%,73.631% 37.917%,74.877% 42.422%,76.279% 46.778%,76.279% 46.778%,79.644% 48.188%,83.174% 49.741%,86.721% 51.506%,90.134% 53.55%,93.267% 55.94%,95.969% 58.743%,98.091% 62.029%,99.484% 65.863%,100% 70.313%,99.489% 75.448%,99.489% 75.448%,98.387% 80.091%,96.297% 84.117%,93.398% 87.568%,89.867% 90.488%,85.882% 92.92%,81.622% 94.907%,77.264% 96.492%,72.987% 97.718%,68.968% 98.628%,65.385% 99.265%,65.385% 99.265%,59.388% 99.718%,52.012% 99.985%,43.731% 99.867%,35.015% 99.165%,26.336% 97.678%,18.166% 95.209%,10.975% 91.557%,5.237% 86.524%,1.421% 79.909%,0% 71.515%,0% 71.515%,0.024% 70.825%,0.1% 69.857%,0.226% 68.678%,0.398% 67.356%,0.615% 65.959%,0.872% 64.554%,1.168% 63.207%,1.498% 61.988%,1.861% 60.964%,2.253% 60.201%,2.253% 60.201%,3.844% 58.107%,5.645% 56.236%,7.62% 54.565%,9.731% 53.075%,11.939% 51.746%,14.207% 50.556%,16.497% 49.486%,18.772% 48.514%,20.992% 47.621%,23.122% 46.786%,23.122% 46.786%,23.242% 46.71%,23.343% 46.637%,23.43% 46.565%,23.505% 46.491%,23.571% 46.413%,23.632% 46.33%,23.691% 46.239%,23.752% 46.138%,23.817% 46.026%,23.89% 45.899%,23.89% 45.899%,25.259% 41.6%,26.48% 37.184%,27.558% 32.671%,28.499% 28.079%,29.311% 23.43%,29.998% 18.742%,30.567% 14.036%,31.024% 9.33%,31.375% 4.645%,31.627% 0%,68.775% 0.037% ); */
+        /* clip-path: polygon( 68.775% 0.037%,68.775% 0.037%,68.922% 4.677%,69.192% 9.403%,69.59% 14.185%,70.119% 18.995%,70.784% 23.802%,71.588% 28.578%,72.536% 33.293%,73.631% 37.917%,74.877% 42.422%,76.279% 46.778%,76.279% 46.778%,79.644% 48.188%,83.174% 49.741%,86.721% 51.506%,90.134% 53.55%,93.267% 55.94%,95.969% 58.743%,98.091% 62.029%,99.484% 65.863%,100% 70.313%,99.489% 75.448%,99.489% 75.448%,98.387% 80.091%,96.297% 84.117%,93.398% 87.568%,89.867% 90.488%,85.882% 92.92%,81.622% 94.907%,77.264% 96.492%,72.987% 97.718%,68.968% 98.628%,65.385% 99.265%,65.385% 99.265%,59.388% 99.718%,52.012% 99.985%,43.731% 99.867%,35.015% 99.165%,26.336% 97.678%,18.166% 95.209%,10.975% 91.557%,5.237% 86.524%,1.421% 79.909%,0% 71.515%,0% 71.515%,0.024% 70.825%,0.1% 69.857%,0.226% 68.678%,0.398% 67.356%,0.615% 65.959%,0.872% 64.554%,1.168% 63.207%,1.498% 61.988%,1.861% 60.964%,2.253% 60.201%,2.253% 60.201%,3.844% 58.107%,5.645% 56.236%,7.62% 54.565%,9.731% 53.075%,11.939% 51.746%,14.207% 50.556%,16.497% 49.486%,18.772% 48.514%,20.992% 47.621%,23.122% 46.786%,23.122% 46.786%,23.242% 46.71%,23.343% 46.637%,23.43% 46.565%,23.505% 46.491%,23.571% 46.413%,23.632% 46.33%,23.691% 46.239%,23.752% 46.138%,23.817% 46.026%,23.89% 45.899%,23.89% 45.899%,25.259% 41.6%,26.48% 37.184%,27.558% 32.671%,28.499% 28.079%,29.311% 23.43%,29.998% 18.742%,30.567% 14.036%,31.024% 9.33%,31.375% 4.645%,31.627% 0%,68.775% 0.037% ); */
 
-    background-size: 
-    160% 100%,
-    100% 100%;
+        background-size: 
+        160% 100%,
+        100% 100%;
 
-    background-position: 
-    center 0.45em,
-    center top;
+        background-position: 
+        center 0.45em,
+        center top;
 
-    background-repeat: no-repeat;
+        background-repeat: no-repeat;
+    }
+
+    /* ///////////////// */
+    /* 🍙🍙🍙 STAND 🍙🍙🍙 */
+    /* ///////////////// */
+
+    &::after {
+        content: "";
+        position: absolute;
+        z-index: 3;
+        bottom: -7.5em;
+
+        display: block;
+
+        height: 7.5em;
+        width: 7em;
+
+        background-image: var(--background-gr-stand);
+        /* Neck shadow */
+        /* linear-gradient(
+            to bottom,
+            var(--lamp-shadow),
+            var(--lamp-color)
+        ); */
+
+        background-size:
+        100% 100%;
+
+        background-repeat: no-repeat;
+
+        /* Use the complex shape as a mask */
+        /* 🔗 SOURCE: https://claude.ai/share/6e33bcc8-2a2d-478e-b28d-fb2df7b21430 */
+        mask-image: 
+        /* Gradients from transparent(cut-outs) to lamp color */
+        /* Left part */
+        radial-gradient(
+            /* Position cut-out at left top */
+            at left top,
+            transparent 1.5em,
+            white calc(1.5em + 1px)
+        ),
+        /* Right part */
+        radial-gradient(
+            /* Position cut-out at right top */
+            at right top,
+            transparent calc(1.5em + 1px),
+            white 1.5em
+        );
+
+        /* Mask height extra big for elongated shape */
+        mask-size: 50% 200%, 50% 200%;
+        mask-position: left top, right top;
+        mask-repeat: no-repeat;
+    }
 }
 
 /* ///////////////// */
-/* 🍙🍙🍙 STAND 🍙🍙🍙 */
+/* 🔥🔥🔥 LIGHT 🔥🔥🔥 */
 /* ///////////////// */
 
-div:first-of-type::after {
+section:first-of-type div:nth-of-type(2) {
+    /* To justify/center ::before item */
+    display: grid;
+    justify-content: center;
+    margin-top: 17em;
+    /* height: 14em;
+    width: 25em; */
+
+    height: var(--light-height, 14em);
+    width: var(--light-width, 25em);
+
     position: absolute;
-    z-index: -1;
-    bottom: -7.5em;
+    z-index: 4;
 
-    display: block;
-    content: "";
+    border-radius: 100% 100% 100% 100% / 100% 100% 40% 40%;
+    filter: blur(10px);
+    background-color: var(--lamp-color);
+    /* Adjust color based on warmth - warmer = more yellow */
+    /* background-color: oklch(
+        from var(--lamp-color) 
+        calc(l / 1.3) 
+        calc(c * 1.5) 
+        calc(h + var(--light-hue-shift))
+    ); */
 
-    height: 7.5em;
-    width: 7em;
+    /* Light cast off behind */
+    &::before {
+        content: "";
+        display: block;
+        justify-self: center;
+        height: 100%;
+        /* width: 90%; */
+        /* Use intensity variable to control width */
+        /* width: var(--width-light); */
 
-    background-image:
-    /* Neck shadow */
-    linear-gradient(
-        to bottom,
-        var(--shadow-creme),
-        var(--lamp-color)
-    );
+        position: absolute;
+        bottom: 0%;
 
-    background-size:
-    100% 100%;
+        filter: blur(40px);
+        background-color: var(--lamp-color);
+        /* Adjust color based on warmth - warmer = more yellow */
+        /* background-color: oklch(
+            from var(--lamp-color) 
+            calc(l / 1.3) 
+            calc(c * 1.5) 
+            calc(h + var(--light-hue-shift))
+        ); */
+        opacity: 0.7;
 
-    background-repeat: no-repeat;
+        /* Oval shape */
+        border-radius: 50%;
 
-    /* Use the complex shape as a mask */
-    mask-image: 
-    /* Gradients from transparent(cut-outs) to lamp color */
-    /* Left part */
-    radial-gradient(
-        /* Position cut-out at left top */
-        at left top,
-        transparent 1.5em,
-        white calc(1.5em + 1px)
-    ),
-    /* Right part */
-    radial-gradient(
-        /* Position cut-out at right top */
-        at right top,
-        transparent calc(1.5em + 1px),
-        white 1.5em
-    );
+        /* Twice as big as div */
+        transform: scale(2);
 
-    /* Mask height extra big for elongated shape */
-    mask-size: 50% 200%, 50% 200%;
-    mask-position: left top, right top;
-    mask-repeat: no-repeat;
+    }
+
+    /* Light out of lamp */
+    &::after {
+        content: "";
+        display: block;
+        justify-self: center;
+        height: 150%;
+        width: 120%;
+
+        position: absolute;
+        bottom: -120%;
+
+        clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+        background-color: var(--lamp-color);
+        /* background-color: oklch(
+            from var(--lamp-color) 
+            calc(l / 1.3) 
+            calc(c * 1.5) 
+            calc(h + var(--light-hue-shift))
+        ); */
+        opacity: 0.5;
+    }
 }
 
 /* /////////////////// */
 /* 🤎🤎🤎 DRESSER 🤎🤎🤎 */
 /* /////////////////// */
 
-div + div {
-    z-index: -3;
+section + section {
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+
+    /* Viewport units for responsiveness */
+    --height: 45vmin;
+    --start-left: -25vw;
+    --start-bottom: -15vh;
+
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    /* 🔗 SOURCE: https://css-tricks.com/almanac/properties/p/perspective/ */
+    /* 🔗 SOURCE: https://developer.mozilla.org/en-US/docs/Web/CSS/perspective */
+    /* 🔗 SOURCE: https://miocene.io/posts/3d-cube-with-css/3d-cube-with-css/ */
+    /* 🔗 SOURCE: https://webcode.tools/css-generator/perspective */
     
-    height: 100%;
-    width: 100%;
-    
-    /* Skew the dresser in the Y-axis to create illusion of perspective */
-    transform: skewY(6deg);
+    perspective-origin: top right;
+    /* 🔗 SOURCE: https://developer.mozilla.org/en-US/docs/Web/CSS/perspective-origin */
 
     position: absolute;
+    bottom: 0%;
 }
 
-/* Dresser back part */
-div + div::before {
-    content: "";
-    height: 27em;
-    width: 70em;
+section + section div {
+    z-index: 1;
 
-    position: absolute;
-    bottom: -5em;
-    left: -5em;
-    background-color: #472400;
+    height: var(--height);
+    width: 95vw;
 
+    background-color: var(--dresser-brown);
     background-image: url(./images/Brown\ Wood\ Textured\ Background.jpg);
     background-blend-mode: lighten;
-
+    /* 🔗 SOURCE: https://css-tricks.com/basics-css-blend-modes/ */
     background-size: cover;
-    /* background-position: center end; */
+    
+    transform: rotateY(-4deg);
+    transform-style: preserve-3d;
 
-    background-repeat: no-repeat;
-    /* Use mask for wood nerves effect */
-}
+    position: inherit;
 
-/* Dresser front part */
-div + div::after {
-    content: "";
-    height: 27em;
-    width: 70em;
+    /* Positioning to correct perspective */
+    bottom: var(--start-bottom);
+    left: var(--start-left);
 
-    position: absolute;
-    bottom: -10.2em;
-    left: -10.2em;
-    background-color: #472400;
+    --depth: 20vmin;
 
-    background-image: url(./images/Brown\ Wood\ Textured\ Background.jpg);
-    background-blend-mode: lighten;
+    &::before {
+        content: "";
+        display: block;
+        height: var(--depth);
+        width: 100%;
+        position: absolute;
 
-    background-size: cover;
+        background-color: var(--dresser-brown);
+        background-image: url(./images/Brown\ Wood\ Textured\ Background.jpg);
+        background-blend-mode: lighten;
+        background-size: cover;
 
-    background-repeat: no-repeat;
-    /* Use mask for wood nerves effect */
+        transform: rotateX(-90deg);
+        
+        transform-origin: top center;
+    }
+
+    &::after {
+        content: "";
+        display: block;
+        height: 100%;
+        width: var(--depth);
+        position: absolute;
+
+        background-color: var(--dresser-brown);
+        background-image: url(./images/Brown\ Wood\ Textured\ Background.jpg);
+        
+        background-blend-mode: lighten;
+        background-size: cover;
+    
+        transform: rotateY(-90deg);
+        transform-origin: center right;
+    
+        right: 0;
+    }
 }
 
 /* //////////////////// */
 /* 🩷🩷🩷 CONTROLS 🩷🩷🩷 */
 /* //////////////////// */
 
-section + section {
+section:last-of-type {
     display: flex;
     flex-direction: column;
+    align-items: start;
     gap: 1.5rem;
     
-    width: 20em;
-    height: 50vh;
+    width: auto;
+    height: fit-content;
     padding: 2em;
 
-    top: 0;
+    /* top: 0; */
+    bottom: 0;
     right: 0;
 
     z-index: 5;
     position: absolute;
 
-    background-color: red;
+    background-color: white;
+
+    /* font-family: ;
+    font-size: ; */
+
 }
+
+label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    font-family: var(--comico);
+}
+
+/* ////////////////// */
+/* 🍸🍸🍸 SLIDER 🍸🍸🍸 */
+/* ////////////////// */
 
 input[type=range] {
     width: 100%;
     box-sizing: border-box;
 }
+
+/* ///////////////// */
+/* 🌶️🌶️🌶️ RADIO 🌶️🌶️🌶️ */
+/* ///////////////// */
+
+input[type="radio"] {
+    -webkit-appearance: none;
+    appearance: none;
+
+    font: inherit;
+    color: currentColor;
+    width: 1.5em;
+    height: 1.5em;
+    background-color: var(--lamp-color);
+    /* First with color-mix then with --shadow property */
+    box-shadow: inset -.2rem -.2rem .5rem var(--lamp-shadow);
+    /* 🔗 SOURCE: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color-mix */
+    border-radius: 50%;
+
+    --lamp-color: attr(value type(<color>), red);
+    /* --lamp-color: attr(value type(<hex>), red) */
+    /* 🔗 SOURCE: https://developer.chrome.com/blog/advanced-attr */
+    /* 🔗 SOURCE: https://developer.mozilla.org/en-US/docs/Web/CSS/attr */
+
+    /* Shadow colour */
+    --lamp-shadow: oklch(from var(--lamp-color) calc(l / 1.5) c h);
+        
+    &:checked {
+        scale: .8;
+
+        outline:solid .1em var(--lamp-color);
+        outline-offset:.3em;
+
+        /* First with color-mix */
+        box-shadow: inset .2rem .2rem .5rem var(--lamp-shadow);
+    }
+}
+
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    width: 2rem;
+    height: 2rem;
+    background-color: #2d1002;
+    border-radius: 50%;
+
+    position: absolute;
+    z-index: -1;
+}
+
+label:nth-of-type(3) {
+    width: fit-content;
+    font-size: 1.2rem;
+
+    &::after {
+        content: "🤎";
+        margin-left: .38rem;
+    }
+}
+
+/* ///////////////////// */
+/* 🎞️🎞️🎞️ DARK MODE 🎞️🎞️🎞️ */
+/* ///////////////////// */
+
+@container style(--dark-mode:true) {
+    body {
+        background-color: #2d1002;
+    }
+
+    h1 {
+        color: seashell;
+    }
+
+    input[type="checkbox"] {
+        background-color: var(--seashell);
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    }
+    
+    label:nth-of-type(3) {
+        &::after {
+            content: "☀️";
+            margin-left: .38rem;
+        }
+    }
+}
+
+@container style(--dark-mode:false) {
+    body {
+        background-color: rgb(232, 215, 203);
+        /* background-image: url(./images/panterprint.png);
+        background-blend-mode: multiply;
+        background-size: cover;
+        background-repeat: no-repeat; */
+    }
+}
+
+/* Lamp colours */
+/* input[value="cream"] {
+    --lamp-color: var(--cream);
+}
+
+input[value="pink"] {
+    --lamp-color: var(--pink);
+}
+
+input[value="brown"] {
+    --lamp-color: var(--brown);
+}
+
+input[value="orange"] {
+    --lamp-color: var(--orange);
+}
+
+input[value="light-blue"] {
+    --lamp-color: var(--light-blue);
+}
+
+input[value="chrome"] {
+    --lamp-color: var(--chrome);
+}
+
+input[value="gold"] {
+    --lamp-color: var(--gold);
+} */
+
+/* ///////////////////////// */
+/* 🥐🥐🥐 STYLE QUERIES 🥐🥐🥐 */
+/* ///////////////////////// */
+
+/* Body of section selecteren? */
+/* @container style(--cream:true) {
+    
+	section:first-of-type div:nth-of-type(2) {
+        --lamp-color: var(--cream); 
+    }
+}
+
+@container style(--pink:true) {
+
+	section:first-of-type div:nth-of-type(2) {
+        --lamp-color: var(--pink);
+    }
+} */
+

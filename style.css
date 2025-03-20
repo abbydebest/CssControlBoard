@@ -63,7 +63,7 @@
 
     /* Background gradients */
     /* Background gradients top */
-    --gradient-colour-top:
+    --gradient-shadow-top:
         /* Indent shadow effect with two radial gradients */
         radial-gradient(
             var(--lamp-color) 30%,
@@ -82,7 +82,7 @@
         linear-gradient(
             transparent 40%,
             var(--lamp-shadow) 95%
-        );
+        );        
     
     /* Background gradients stand */
     --gradient-colour-stand: linear-gradient(
@@ -164,28 +164,28 @@ html:has([value="seashell"]:checked) {
 	--lamp-color: var(--seashell);
     --lamp-shadow: var(--shadow-seashell);
     --background-gr-stand: var(--gradient-colour-stand);
-    --background-gr-top: var(--gradient-colour-top);
+    --background-gr-top: var(--gradient-shadow-top);
 }
 
 html:has([value="pink"]:checked) {
 	--lamp-color: var(--pink);
     /* --shadow: var(--shadow-pink); */
     --background-gr-stand: var(--gradient-colour-stand);
-    --background-gr-top: var(--gradient-colour-top);
+    --background-gr-top: var(--gradient-shadow-top);
 }
 
 html:has([value="SaddleBrown"]:checked) {
 	--lamp-color: var(--brown);
     --lamp-shadow: var(--shadow-brown);
     --background-gr-stand: var(--gradient-colour-stand);
-    --background-gr-top: var(--gradient-colour-top);
+    --background-gr-top: var(--gradient-shadow-top);
 }
 
 html:has([value="#EA806C"]:checked) {
 	--lamp-color: var(--orange);
     --lamp-shadow: var(--shadow-orange);
     --background-gr-stand: var(--gradient-colour-stand);
-    --background-gr-top: var(--gradient-colour-top);
+    --background-gr-top: var(--gradient-shadow-top);
 }
 
 html:has([value="lightblue"]:checked) {
@@ -193,7 +193,7 @@ html:has([value="lightblue"]:checked) {
     /* --shadow: var(--shadow-lightblue); */
 
     --background-gr-stand: var(--gradient-colour-stand);
-    --background-gr-top: var(--gradient-colour-top);
+    --background-gr-top: var(--gradient-shadow-top);
 }
 
 html:has([value="silver"]:checked) {
@@ -201,7 +201,8 @@ html:has([value="silver"]:checked) {
     /* --shadow: var(--shadow-silver); */
 
     --background-gr-stand: var(--gradient-chrome-stand);
-    --background-gr-top: var(--gradient-colour-top);
+    --background-gr-top: var(--gradient-chrome-stand);
+    /* --background-chrome: var(--gradient-chrome-top); */
 }
 
 /* html:has([value="gold"]:checked) {
@@ -493,7 +494,7 @@ section:first-of-type div:nth-of-type(2) {
         display: block;
         justify-self: center;
         height: 100%;
-        /* width: 90%; */
+        width: 60%;
         /* Use intensity variable to control width */
         /* width: var(--width-light); */
 
@@ -693,6 +694,7 @@ input[type="radio"] {
     /* 🔗 SOURCE: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color-mix */
     border-radius: 50%;
 
+    /* With help from Sanne 't Hoofd 🫶🏼 */
     --lamp-color: attr(value type(<color>), red);
     /* --lamp-color: attr(value type(<hex>), red) */
     /* 🔗 SOURCE: https://developer.chrome.com/blog/advanced-attr */

@@ -127,7 +127,36 @@ Lastly I added some controls in preparation of making the lamp and scene interac
 ![Result after week 3](./images/process/screenshot-week3-end-result.png)
 
 ## Feedback
-* 3D isometric of perspective
-* CSS nesting (componenten bij elkaar houden, structuur in lezen)
+* Try using 3D isometric or perspective
+* CSS nesting (two reasons to use nesting: keep components together, structure in reading)
 * Container queries
-* Typography title and animation
+* Typography title and optional animation
+
+# 🥟 Week 4
+
+## Scene, light, styled radio buttons and dresser perspective
+
+### Light effect div
+To create the effect of 'actual' light coming of the lamp I added an extra `<div>` styled, sized and positioned exactly the same as the mushroom lamp top. Except placing it behind the actual lamp top and making it slightly bigger and blurred with `filter: blur();`. This way it gives the illusion of light. This is also the element I intend to control with the slider by making it bigger as the slider progresses. 
+
+To make the light effect even more realistic, I added a `::before` and `::after` element to create light coming out of the bottom of the lamp and a cast of behind the lamp.
+
+![Light effect div](./images/process/screen-recording-week4-light-effect-div.mov)
+
+### Styled radio buttons
+Because I had never really worked with inputs before I also did not know the best way to style them. I used a source that I had also used for radio buttons during the subject browser tech. The source used `::before` and `::after` element on the radio button, which is a great way to make more and very specific styling states, but was way to complicated for what I wanted to achieve. 
+
+Which in this case was the radio button sizing down when checked and getting a thin border plus a small inset border to give it a depth/3d effect. Which I achieved by simply styling the `:checked` state of the radio button. 
+
+I mirrored the inset shadow position on the `:checked` state to create a small animation effect(from 2em to -2em).
+
+## Change colour lamp on :checked & make the html attribute with a colour value the lamp colour
+
+## Making the shadow colour adjust to the lamp colour, chrome colour, light intensity slider and light/dark mode with container style queries
+
+### Chrome colour
+
+
+## The final result
+
+## If I had more time on hand

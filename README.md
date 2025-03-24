@@ -142,7 +142,7 @@ To create the effect of 'actual' light coming of the lamp I added an extra `<div
 
 To make the light effect even more realistic, I added a `::before` and `::after` element to create light coming out of the bottom of the lamp and a cast of behind the lamp.
 
-![Light effect div](./images/process/)
+![Light effect div](./images/process/week-light-effect-screen-recording.mp4)
 
 ### Styled radio buttons
 Because I had never really worked with inputs before I also did not know the best way to style them. I used a source that I had also used for radio buttons during the subject browser tech. The source used `::before` and `::after` element on the radio button, which is a great way to make more and very specific styling states, but was way to complicated for what I wanted to achieve. 

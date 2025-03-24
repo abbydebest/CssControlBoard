@@ -142,7 +142,7 @@ To create the effect of 'actual' light coming of the lamp I added an extra `<div
 
 To make the light effect even more realistic, I added a `::before` and `::after` element to create light coming out of the bottom of the lamp and a cast of behind the lamp.
 
-![Light effect div](./images/process/screen-recording-week4-light-effect-div.mov)
+![Light effect div](./images/process/)
 
 ### Styled radio buttons
 Because I had never really worked with inputs before I also did not know the best way to style them. I used a source that I had also used for radio buttons during the subject browser tech. The source used `::before` and `::after` element on the radio button, which is a great way to make more and very specific styling states, but was way to complicated for what I wanted to achieve. 
@@ -175,7 +175,7 @@ I then changed the colour of the lamp based on the radio that is clicked with `:
 ### Shadow adjust to lamp colour
 First used color mix, then custom property in box-shadow and adjusting the oklch values of --lamp-colour. See last rule pf code down below.
 
-![Code of creating a shadow colour based on the lamp colours](./images/process/)
+![Code of creating a shadow colour based on the lamp colours](./images/process/screenshot-shadow.png)
 
 This way I did not have to define every colours shadow for each input. But I did eventually choose for a combination of the two techniques. For the ones that did not have the shadow colour I liked with oklch, I added in their own colour.
 
@@ -235,6 +235,3 @@ If I had more/extra time on this project I would have:
 * (Styling) inputs
 * CSS shapes and gradients
 * CSS effects
-=======
-* Typography title and animation
->>>>>>> parent of 59ceecd (Read me 🥟 Week 4)

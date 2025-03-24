@@ -212,7 +212,7 @@ The styling for the checkbox with `:after`
 ![Styling of the checkbox with :after](./images/process/screenshot-week4-switch-darkmode-true.png)
 
 ## The final result
-![Final result after week 4](./images/process/EndResult.mov)
+![Final result after week 4](./images/process/screenshot-week4-end-result.png)
 
 ## If I had more time on hand
 If I had more/extra time on this project I would have:

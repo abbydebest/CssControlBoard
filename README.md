@@ -127,9 +127,10 @@ Lastly I added some controls in preparation of making the lamp and scene interac
 ![Result after week 3](./images/process/screenshot-week3-end-result.png)
 
 ## Feedback
-* Try using 3D isometric or perspective
-* CSS nesting (two reasons to use nesting: keep components together, structure in reading)
+* 3D isometric of perspective
+* CSS nesting (componenten bij elkaar houden, structuur in lezen)
 * Container queries
+<<<<<<< HEAD
 * Typography title and optional animation
 
 # 🥟 Week 4
@@ -148,15 +149,92 @@ Because I had never really worked with inputs before I also did not know the bes
 
 Which in this case was the radio button sizing down when checked and getting a thin border plus a small inset border to give it a depth/3d effect. Which I achieved by simply styling the `:checked` state of the radio button. 
 
+![Code of styling the radio button :checked state](./images/process/screenshot-week4-styled-radio-buttons-code-part2.png)
+
 I mirrored the inset shadow position on the `:checked` state to create a small animation effect(from 2em to -2em).
 
+![Code of mirroring the shadow inside the radio button](./images/process/screenshot-week4-styled-radio-buttons-code-part1.png)
+
+To give the radio buttons the same background color as the lamp I first changed the --lamp-colour for each radio button with their colour as value. When I wanted to also change the the colour of the lamp to the same colour when the radio button was clicked, Sanne introduced me to the `attr()` CSS function and showed me how to use it to achieve the colour changing on click/:checked. By using this technique, I had to write a lot less code. See the next heading/step for further explanation.
+
+![Unused code of changing the radio background by changing --lamp-colour depending on inputs value](./images/process/screenshot-week4-styled-radio-buttons-code-background.png)
+
 ## Change colour lamp on :checked & make the html attribute with a colour value the lamp colour
+To change the colour of the lamp based on which radio button is clicked I eventually used a combination of the `:has()` function and the CSS `attr()` function. This way I had to use a lot less code.
+
+I redefined the property `--lamp-color` in the radio button code to the value of the button that is clicked with the `attr()` function. This works because with the `attr()` function I tell the property `--lamp-color` is equal to the `value` attribute that is a type `<color>`. Also, for this to work, I had to give the values of the inputs pre-existing vs code colours. I later found out that hex codes and other ways of defining colours work as well, since the text editor reads/recognizes them as colours.
+
+![Code with attr() function](./images/process/screenshot-week4-styled-radio-buttons-code-attr-function-part3.png)
+
+I then changed the colour of the lamp based on the radio that is clicked with `:has()`.
+
+![Code with :has() function](./images/process/screenshot-week4-styled-has-and-custom-properties.png)
 
 ## Making the shadow colour adjust to the lamp colour, chrome colour, light intensity slider and light/dark mode with container style queries
 
-### Chrome colour
+### Shadow adjust to lamp colour
+First used color mix, then custom property in box-shadow and adjusting the oklch values of --lamp-colour. See last rule pf code down below.
 
+![Code of creating a shadow colour based on the lamp colours](./images/process/)
+
+This way I did not have to define every colours shadow for each input. But I did eventually choose for a combination of the two techniques. For the ones that did not have the shadow colour I liked with oklch, I added in their own colour.
+
+### Chrome colour
+I badly wanted to create a chrome effect colour for the lamp. To achieve this I had to change the first coloured background gradient of the lamp(stand) to one with a chrome gradient. I asked Claude AI to give me a realistic chrome effect in a gradient I could use, based of an image I gave. I created a custom property with this and added this one to the stand background on click/:checked of the radio button with the value silver.
+
+![Code define background colour is a chrome gradient in :has radio button value silver](./images/process/screenshot-week4-define-background-gradient-chrome.png)
+![Code chrome gradient custom property](./images/process/screenshot-week4-chrome-background-gradient-custom-property.png)
+
+🔗 Claude's chrome gradients: https://claude.ai/chat/ef4c6603-086b-4737-a152-a32695501abd
+
+Because I changed the custom property of the background on the lamp stand itself, the other lamp colours background was not defined and I had to create a second custom property with the default coloured background gradient. And then of course also add this custom property gradient to the stand background when a colour input is clicked/:checked.
+
+![Code define background colour is a colour gradient in :has radio button value with normal colour](./images/process/screenshot-week4-define-background-gradient-colour.png)
+![Code colour gradient custom property](./images/process/screenshot-week4-colour-background-gradient-custom-property.png)
+
+### Light intensity slider
+To make the lamp work I wanted to make it interactive and controllable with two sliders. One for the light intensity, or brightness of the lamp and one for the warmth of the light. I had to skip the last one due to lack of time, but I made the intensity slider work.
+
+I wanted to up-size and transform the `<div>` the creates the illusion of light. I checked what the max size was that I wanted to give the element with the slider. Because I had never worked with input sliders before, I used Claude AI to help calculate the desired effect I wanted.
+
+![Code light intensity custom properties](./images/process/screenshot-week4-light-intensity-custom-properties-calc.png)
+![Code light effect](./images/process/screenshot-week4-light-intensity-light-effect.png)
+
+🔗 Claude AI calculations and code: https://claude.ai/share/5b199692-d931-4f2f-bfd9-c9615dd21d1d
+
+### Light/dark mode(container style queries)
+To create a light and dark mode I chose to use and practice style container queries. I added another `:has()` function that made `--dark-mode` true when a checkbox with value switch is `:checked`. 
+
+![Code dark mode true when checkbox:checked](./images/process/screenshot-week4-switch-darkmode-true.png)
+![Code styling for darkmode](./images/process/screenshot-week4-darkmode-styling.png)
+
+The styling for the checkbox with `:after`
+![Styling of the checkbox with :after](./images/process/screenshot-week4-switch-darkmode-true.png)
 
 ## The final result
+![Final result after week 4](./images/process/EndResult.mov)
 
 ## If I had more time on hand
+If I had more/extra time on this project I would have:
+* Added an on/off button for the lamp
+* Properly finished the chrome lamp colour, by adding a second lamp adn switching to this second one
+* Added more items to the scene, like a fun wallpaper, some books and decor and some art pieces on the wall.
+* Added a light warmth slider making the light go from blue and cold to  more yellow and warm
+* Styled and added more creativity to the input sliders 
+* Giving the lamp a shine effect with some white shapes(maybe on hover)
+* Added animation in the title with a variable font
+* Added animation in the inputs label texts
+* Added subtle animation to the lamp when it switched from one colour to another
+* Changed the cursor to a custom one
+* Added an overall grain effect/overlay to the scene
+
+## What I learned
+* Custom properties
+* attr() css function
+* :has()
+* (Styling) inputs
+* CSS shapes and gradients
+* CSS effects
+=======
+* Typography title and animation
+>>>>>>> parent of 59ceecd (Read me 🥟 Week 4)
